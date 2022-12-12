@@ -1,0 +1,29 @@
+{% extends 'layout.html'%}
+
+{% block content   %}
+<div >
+    <form method="POST" action="" class=" " style="padding: 20px;width: 90%; margin: auto">
+       {{ form.hidden_tag() }}
+
+        <fieldset class="form-group m-3">
+            <legend class="border-bottom mb-5 " style="color: #F48840"> Reset Password</legend>
+            <div class="form-group" style="color: #F48840">
+                {{ form.email.label(class= "form-control-label") }}
+               {% if form.email.errors %}
+                   {{ form.email(class= "form-control form-control-lg is-invalid") }}
+                    <div class="invalid-feedback">
+                         {% for error in form.email.errors%}
+                           <span class="alert-danger"> {{ error }} </span>
+                         {% endfor%}
+                    </div>
+                {% else %}
+                     {{ form.email(class= "form-control form-control-lg") }}
+                {% endif%}
+            </div>
+        </fieldset>
+        <div class="form-group" style="color: #F48840; padding-left: 20px">
+        {{ form.submit( class="btn btn-outline-warning bg-" ) }}
+        </div>
+    </form>
+</div>
+{% endblock content %}

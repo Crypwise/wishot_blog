@@ -1,0 +1,76 @@
+{% extends 'layout.html' %}
+
+{% block content   %}
+<div style="padding-top: 130px;">
+    <form method="POST" action="" style="width: 85%; margin: auto">
+       {{ form.hidden_tag() }}
+        <fieldset class="form-group m-3">
+            <legend class="border-bottom mb-5 " style="color: #F48840"> Join Us Today</legend>
+            <div class="form-group" style="color: #F48840">
+                {{ form.username.label(class= "form-control-label") }}
+                {% if form.username.errors %}
+                    {{ form.username(class= "form-control form-control-lg is-invalid") }}
+                    <div class="invalid-feedback">
+                         {% for error in form.username.errors %}
+                           <span class="alert-danger"> {{ error }} </span>
+                         {% endfor%}
+                    </div>
+                {% else%}
+                     {{ form.username(class= "form-control form-control-lg") }}
+                {% endif%}
+            </div>
+
+            <div class="form-group" style="color: #F48840">
+                {{ form.email.label(class= "form-control-label") }}
+               {% if form.email.errors %}
+                   {{ form.email(class= "form-control form-control-lg is-invalid") }}
+                    <div class="invalid-feedback">
+                         {% for error in form.email.errors%}
+                           <span class="alert-danger"> {{ error }} </span>
+                         {% endfor%}
+                    </div>
+                {% else %}
+                     {{ form.email(class= "form-control form-control-lg") }}
+                {% endif%}
+            </div>
+
+            <div class="form-group" style="color: #F48840">
+                {{ form.password.label(class= "form-control-label") }}
+                {% if form.password.errors %}
+                   {{ form.password(class= "form-control form-control-lg is-invalid") }}
+                    <div class="invalid-feedback">
+                         {% for error in form.password.errors %}
+                           <span class="alert-danger"> {{ error }} </span>
+                         {% endfor%}
+                    </div>
+                {% else%}
+                     {{ form.password(class= "form-control form-control-lg") }}
+                {% endif%}
+            </div>
+
+            <div class="form-group" style="color: #F48840">
+                {{ form.confirm_password.label(class= "form-control-label") }}
+                {% if form.confirm_password.errors %}
+                    {{ form.confirm_password(class= "form-control form-control-lg is-invalid") }}
+                    <div class="invalid-feedback">
+                         {% for error in form.confirm_password.errors%}
+                            <span class="alert-danger"> {{ error }} </span>
+                         {% endfor%}
+                    </div>
+                {% else%}
+                     {{ form.confirm_password(class= "form-control form-control-lg") }}
+                {% endif%}
+            </div>
+        </fieldset>
+        <div class="form-group" style="padding-left: 20px">
+        {{ form.submit( class="btn btn-outline-warning" ) }}
+        </div>
+    </form>
+    <div class="border-top pt-2" style="width: 85%; margin: auto">
+      <small class="text-muted">
+         Already Have An Account? <a class="ml-3 " style="color: #F48840" href= "{{ url_for('users.login') }}">Sign In </a>
+      </small>
+   </div>
+</div>
+
+{% endblock content  %}

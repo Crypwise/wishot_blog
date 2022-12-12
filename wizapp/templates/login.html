@@ -1,0 +1,58 @@
+
+{% extends 'layout.html' %}
+
+{% block content %}
+
+<div style="padding-top: 130px;">
+    <form method="POST" action="" style="width: 85%; margin: auto">
+       {{ form.hidden_tag() }}
+        <fieldset class="form-group m-3" >
+            <legend class="border-bottom mb-5 " style="color: #F48840"> Login Now</legend>
+            <div class="form-group" style="color: #F48840">
+                {{ form.email.label(class= "form-control-label") }}
+                {% if form.email.errors %}
+                    {{ form.email(class= "form-control form-control-lg is-invalid") }}
+                    <div class="invalid-feedback">
+                         {% for error in form.email.errors %}
+                           <span class="alert-danger"> {{ error }} </span>
+                         {% endfor%}
+                    </div>
+                {% else%}
+                     {{ form.email(class= "form-control form-control-lg") }}
+                {% endif%}
+            </div>
+
+            <div class="form-group" style="color: #F48840">
+                {{ form.password.label(class= "form-control-label") }}
+                {% if form.password.errors %}
+                   {{ form.password(class= "form-control form-control-lg is-invalid") }}
+                    <div class="invalid-feedback">
+                         {% for error in form.password.errors %}
+                           <span class="alert-danger"> {{ error }} </span>
+                         {% endfor%}
+                    </div>
+                {% else%}
+                     {{ form.password(class= "form-control form-control-lg") }}
+                {% endif%}
+            </div>
+        </fieldset>
+          <div class="form-check" style="margin-left: 15px; color: #F48840">
+                {{form.remember( class=" form-check-input ")}}
+                {{form.remember.label( class=" form-check-label")}}
+            </div>
+            <br>
+        <div class="form-group" style="padding-left: 20px" style="color: #F48840">
+        {{ form.submit( class="btn btn-outline-warning " ) }}
+              <small class="text-muted ml-2">
+                <a href="{{ url_for('users.reset_request') }}" style="color: #F48840"> Forgot Password? </a>
+            </small>
+        </div>
+    </form>
+    <div class="border-top pt-2" style="width: 85%; margin: auto">
+      <small class="text-muted">
+         Don't Have An Account? <a class="ml-3 " href= "{{ url_for('users.register') }}" style="color: #F48840">Sign Up </a>
+      </small>
+   </div>
+</div>
+
+{% endblock content  %}
