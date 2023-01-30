@@ -3,7 +3,7 @@ import os
 
 class config:
     SECRET_KEY = '78aea450efb53c77db6c2564c55ed647'
-    SQLALCHEMY_DATABASE_URI = 'sqlite:///storage.db'
+    SQLALCHEMY_DATABASE_URL = os.environ.get('SQLALCHEMY_DATABASE_URL')
     MAIL_SERVER = 'smtp.gmail.com'
     MAIL_PORT = 465
     MAIL_USE_TLS = False
